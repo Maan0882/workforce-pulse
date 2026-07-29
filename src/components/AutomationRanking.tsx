@@ -82,35 +82,37 @@ export default function AutomationRanking({ activities, initialData, simpleMode 
 
   return (
     <div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Score / 100</th>
-            <th>Recoverable INR</th>
-            <th>Repetitive %</th>
-            <th>Team Spread</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ranking.map((r, i) => (
-            <tr key={r.category}>
-              <td>{i + 1}. {r.category}</td>
-              <td>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-                  <div style={{width: '60px', height: '8px', background: 'var(--border-color)', borderRadius: '4px', overflow: 'hidden'}}>
-                    <div style={{width: `${r.score}%`, height: '100%', background: 'var(--success-color)'}}></div>
-                  </div>
-                  {r.score}
-                </div>
-              </td>
-              <td>₹{r.inr.toLocaleString()}</td>
-              <td>{r.repRatio}%</td>
-              <td>{r.emps} emps</td>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Score / 100</th>
+              <th>Recoverable INR</th>
+              <th>Repetitive %</th>
+              <th>Team Spread</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {ranking.map((r, i) => (
+              <tr key={r.category}>
+                <td>{i + 1}. {r.category}</td>
+                <td>
+                  <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                    <div style={{width: '60px', height: '8px', background: 'var(--border-color)', borderRadius: '4px', overflow: 'hidden'}}>
+                      <div style={{width: `${r.score}%`, height: '100%', background: 'var(--success-color)'}}></div>
+                    </div>
+                    {r.score}
+                  </div>
+                </td>
+                <td>₹{r.inr.toLocaleString()}</td>
+                <td>{r.repRatio}%</td>
+                <td>{r.emps} emps</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <p className="text-sm text-secondary mt-4">
         * Score formula: 20% Volume + 30% Repetitiveness + 20% Employee Spread + 30% INR Impact (Normalized).
       </p>

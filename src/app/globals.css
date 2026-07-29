@@ -140,6 +140,30 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(100vw - 2rem) !important;
     height: 80vh !important;
   }
+  .table th, .table td {
+    padding: 0.6rem 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Scrollable table container */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* AI Assistant floating wrapper */
+.ai-assistant-wrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+@media (max-width: 480px) {
+  .ai-assistant-wrapper {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
 }
 
 /* Buttons */
