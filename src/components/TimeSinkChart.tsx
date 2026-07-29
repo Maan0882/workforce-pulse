@@ -35,8 +35,10 @@ export default function TimeSinkChart({ activities, onFilterClick }: { activitie
             <YAxis dataKey="name" type="category" width={120} stroke="var(--text-secondary)" tick={{fill: 'var(--text-secondary)'}} />
             <Tooltip contentStyle={{ background: 'var(--bg-color)', border: '1px solid var(--border-color)' }} />
             <Bar dataKey="hours" fill="var(--accent-color)" cursor="pointer" onClick={(data) => {
-              if (viewBy === 'department') onFilterClick('dept', data.name);
-              if (viewBy === 'taskCategory') onFilterClick('task', data.name);
+              if (data && data.name) {
+                if (viewBy === 'department') onFilterClick('dept', data.name);
+                if (viewBy === 'taskCategory') onFilterClick('task', data.name);
+              }
             }}>
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill="var(--accent-color)" />
