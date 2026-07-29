@@ -1,10 +1,20 @@
 'use client';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { ActivityLog } from '@/utils/dataProcessing';
 
 export default function TimeSinkChart({ activities, onFilterClick }: { activities: ActivityLog[], onFilterClick: (type: 'dept'|'task', value: string) => void }) {
   const [viewBy, setViewBy] = useState<'taskCategory' | 'appUsed' | 'department'>('taskCategory');
+  const [yAxisWidth, setYAxisWidth] = useState(120);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setYAxisWidth(window.innerWidth < 480 ? 80 : 120);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const data = useMemo(() => {
     const agg: Record<string, number> = {};
@@ -32,7 +42,7 @@ export default function TimeSinkChart({ activities, onFilterClick }: { activitie
           <BarChart data={data} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" horizontal={false} />
             <XAxis type="number" stroke="var(--text-secondary)" />
-            <YAxis dataKey="name" type="category" width={120} stroke="var(--text-secondary)" tick={{fill: 'var(--text-secondary)'}} />
+            <YAxis dataKey="name" type="category" width={yAxisWidth} stroke="var(--text-secondary)" tick={{fill: 'var(--text-secondary)'}} />
             <Tooltip contentStyle={{ background: 'var(--bg-color)', border: '1px solid var(--border-color)' }} />
             <Bar dataKey="hours" fill="var(--accent-color)" cursor="pointer" onClick={(data) => {
               if (data && data.name) {

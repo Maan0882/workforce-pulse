@@ -144,6 +144,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.6rem 0.5rem !important;
     font-size: 0.8rem !important;
   }
+  /* Shrink chart labels on mobile to prevent wrapping/squishing */
+  .recharts-cartesian-axis-tick text {
+    font-size: 9px !important;
+  }
 }
 
 /* Scrollable table container */
