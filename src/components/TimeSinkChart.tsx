@@ -69,7 +69,7 @@ export default function TimeSinkChart({ activities, onFilterClick }: { activitie
             <BarChart data={data} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" horizontal={false} />
               <XAxis type="number" stroke="var(--text-secondary)" />
-              <YAxis dataKey="name" type="category" width={120} stroke="var(--text-secondary)" tick={{fill: 'var(--text-secondary)'}} />
+              <YAxis dataKey="name" type="category" width={120} stroke="var(--text-secondary)" tick={{fill: 'var(--text-secondary)'}} interval={0} />
               <Tooltip contentStyle={{ background: 'var(--bg-color)', border: '1px solid var(--border-color)' }} />
               <Bar dataKey="hours" fill="var(--accent-color)" cursor="pointer" onClick={(data) => {
                 if (data && data.name) {
