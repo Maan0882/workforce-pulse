@@ -112,10 +112,10 @@ export default function Dashboard({ initialData }: { initialData: JoinedData }) 
         </div>
       )}
 
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+      <div className="grid grid-cols-3" style={{ gap: '1.5rem', marginBottom: '2rem' }}>
         <div className="glass-panel">
           <h3 className="text-secondary mb-4">Hours/Month Recoverable</h3>
-          <div className="text-2xl" style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--success-color)' }}>
+          <div className="text-2xl text-glow" style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--success-color)' }}>
             {recoverableHours.toLocaleString()} <span className="text-sm">hrs</span>
           </div>
           <p className="text-sm text-secondary mt-2">
@@ -124,7 +124,7 @@ export default function Dashboard({ initialData }: { initialData: JoinedData }) 
         </div>
         <div className="glass-panel">
           <h3 className="text-secondary mb-4">INR/Month Recoverable</h3>
-          <div className="text-2xl" style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--success-color)' }}>
+          <div className="text-2xl text-glow" style={{ fontSize: '3rem', fontWeight: 'bold', color: 'var(--success-color)' }}>
             ₹{recoverableINR.toLocaleString()}
           </div>
           <p className="text-sm text-secondary mt-2">
@@ -137,7 +137,7 @@ export default function Dashboard({ initialData }: { initialData: JoinedData }) 
         </div>
       </div>
 
-      <div className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+      <div className="grid grid-split" style={{ gap: '1.5rem', marginBottom: '2rem' }}>
         <div className="glass-panel">
           <h2 className="mb-4">Time-sink Breakdown</h2>
           <TimeSinkChart activities={filteredActivities} onFilterClick={handleFilterClick} />
@@ -148,7 +148,7 @@ export default function Dashboard({ initialData }: { initialData: JoinedData }) 
         </div>
       </div>
 
-      <div className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
+      <div className="grid grid-split" style={{ gap: '1.5rem' }}>
         <div className="glass-panel">
           <h2 className="mb-4">Automation Priority Ranking</h2>
           <AutomationRanking activities={filteredActivities} initialData={initialData} />

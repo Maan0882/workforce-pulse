@@ -99,6 +99,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Utilities */
 .grid { display: grid; }
+.grid-cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.grid-split {
+  grid-template-columns: 2fr 1fr;
+}
 .flex { display: flex; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
@@ -112,6 +118,28 @@ h1, h2, h3, h4, h5, h6 {
 .text-secondary { color: var(--text-secondary); }
 .text-glow {
   text-shadow: 0 0 15px currentColor;
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .grid-split {
+    grid-template-columns: 1fr !important;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-chat-window {
+    width: calc(100vw - 2rem) !important;
+    height: 80vh !important;
+  }
 }
 
 /* Buttons */

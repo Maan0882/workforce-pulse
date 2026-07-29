@@ -74,7 +74,7 @@ export default function AIAssistant() {
   return (
     <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 50 }} className="no-print">
       {isOpen ? (
-        <div style={{ 
+        <div className="ai-chat-window" style={{ 
           width: '380px', 
           height: '550px', 
           display: 'flex', 
